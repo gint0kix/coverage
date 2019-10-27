@@ -1,0 +1,21 @@
+{
+  "name": "coverage",
+  "version": "1.0.0",
+  "description": "Coverage Finder, using the MERN stack",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "author": "Chris Guevarra",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
