@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
+const validate = require('../validation/register_validation');
 //User Model
 const User = require('../models/User');
 
@@ -23,9 +25,10 @@ router.get('/',(req, res)=>{
 //  @params {userName, publicName, homeStoreNumber, company}
 //  @access private
 router.post('/register',(req, res)=>{
-    User.find()
-        .sort({date: -1})
-        .then(users=> res.json(users))
+    const {publicName,userName,password} = req.body;
+    /*input validation, function validate will return a message if the given input is either empty or
+    has a special character*/
+    
 });
 
 module.exports = router;
