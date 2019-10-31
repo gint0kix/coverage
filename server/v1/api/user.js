@@ -25,10 +25,35 @@ router.get('/',(req, res)=>{
 //  @params {userName, publicName, homeStoreNumber, company}
 //  @access private
 router.post('/register',(req, res)=>{
-    const {publicName,userName,password} = req.body;
-    /*input validation, function validate will return a message if the given input is either empty or
-    has a special character*/
-    
+    //Validates given parameters, by checking if there are any empty strings or special characters
+    const {errors,result,isValid} = validate(req.body);
+    if(!isValid){
+        res.status(400).json({message:errors})
+    }
+    else{
+        //Deconstruct the validated req
+        const{publicName,userName,password}=result;
+        //Create a new user with the 3 given required params
+        let newUser = new User({
+            publicName:publicName,
+            userName:userName,
+            password:password
+        });
+        /*Generates a salt value, with # of rounds set to 12, the higher the value, the better it is 
+        * But will end up taking longer to generate
+        * With the current users password, and the generated salt a hash is created and stored in the user
+        */ 
+        bcrypt.genSalt(12,(err,salt)=>{
+            bcrypt.hash(newUser.password,salt,(err,hash)=>{
+                if(err){throw err;}
+                newUser.password=hash;
+                newUser
+                .save()
+                .then(user=>res.status(201).json(user))
+                .catch(err=>res.status(400).json(err));
+            })
+        })
+    }
 });
 
 module.exports = router;
