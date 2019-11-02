@@ -11,7 +11,7 @@ function register_validation (input){
     if(input.publicName.isEmpty()){
         errors.publicName="Public Name is empty";
     }
-    else if(blackListedChars.test(body.publicName)){
+    else if(blackListedChars.test(input.publicName)){
         errors.publicName="Special characters not allowed";
     }
     else{
@@ -21,18 +21,21 @@ function register_validation (input){
     if(input.userName.isEmpty()){
         errors.userName="Username is empty";
     }
-    else if(blackListedChars.test(body.userName)){
+    else if(blackListedChars.test(input.userName)){
         errors.userName="Special characters not allowed";
     }
     else{
         result.userName=input.userName;
     }
-    //tests the userName if its either empty or has a special character
+    //tests the password if its either empty,has a special character, and between 6-50
     if(input.password.isEmpty()){
         errors.password="password is empty";
     }
-    else if(blackListedChars.test(body.password)){
+    else if(blackListedChars.test(input.password)){
         errors.password="Special characters not allowed";
+    }
+    else if(!(input.password.length>=6 && input.password.length<=50)){
+        errors.password="Password must be between 6 and 50 characters long"
     }
     else{
         result.password=input.password;
@@ -44,4 +47,4 @@ function register_validation (input){
     }
     return errors,result,isValid
 }   
-export default register_validation;
+module.exports =register_validation;
