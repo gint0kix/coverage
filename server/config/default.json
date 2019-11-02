@@ -1,8 +1,0 @@
-{
-    "Backend":{
-        "PORT":3000,
-        "MONGOURI":"mongodb+srv://admin_user:uDe11kKcsZA9cWs3@test-cluster-pt2r1.mongodb.net/test?retryWrites=true",
-        "JWT_SECERT":"jwt_secert",
-        "JWT_EXPIRE":4000
-    }
-}
