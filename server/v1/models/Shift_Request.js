@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 //Create Schema
-const RequestSchema = new Schema({
+const ShiftRequestSchema = new Schema({
     Company:{
         type: String,
         required: true
@@ -11,13 +11,16 @@ const RequestSchema = new Schema({
         type: Number,
         required: true
     },
-    ShiftStart:{
-        type:Date,
-        required: true
-    },
-    ShiftEnd:{
-        type:Date,
-        required: true
+    Shift:{
+        Start:{
+            type:Date,
+            required: true
+        },
+        End:{
+            type:Date,
+            required:true
+        },
+        required: true   
     },
     Description:{
         type: String
@@ -32,4 +35,4 @@ const RequestSchema = new Schema({
     }
 });
 
-module.exports = User = mongoose.model('request',RequestSchema);
+module.exports = User = mongoose.model('shift_request',ShiftRequestSchema);

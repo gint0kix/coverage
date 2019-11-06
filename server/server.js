@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app=express();
 const config = require('config');
-//Body-parser Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 //db Config
@@ -18,4 +17,5 @@ mongoose
 const port = config.get('Backend.PORT') || 5000;
 //Use Routes
 app.use('v1/api/user',require('./v1/api/user')) ;
+app.use('v1/api/shift_request',require('./v1/api/shift_request'));
 app.listen(port,()=> console.log(`Server startd on port ${port}`));

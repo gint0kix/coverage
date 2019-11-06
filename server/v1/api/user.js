@@ -4,7 +4,6 @@ const bcrypt = require('bcryptjs');
 const validate = require('../validation/register_validation');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-//User Model
 const User = require('../models/User');
 
 //  @route GET v1/api/user
