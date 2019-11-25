@@ -23,7 +23,13 @@ const UserSchema = new Schema({
     company:{
         type:String,
         required: true
-    }
+    },
+    requested_shifts:{
+        type: Array
+    },
+    taken_shifts:{
+        type: Array
+    } 
     
 });
 

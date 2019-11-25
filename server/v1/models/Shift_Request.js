@@ -11,16 +11,13 @@ const ShiftRequestSchema = new Schema({
         type: Number,
         required: true
     },
-    Shift:{
-        Start:{
-            type:Date,
-            required: true
-        },
-        End:{
-            type:Date,
-            required:true
-        },
+    ShiftStart:{
+        type: Date,
         required: true   
+    },
+    ShiftEnd:{
+        type:Date,
+        required:true
     },
     Description:{
         type: String
@@ -32,6 +29,10 @@ const ShiftRequestSchema = new Schema({
     DatePosted:{
         type:Date,
         default: Date.now
+    },
+    Taken:{
+        type:Boolean,
+        default:false
     }
 });
 

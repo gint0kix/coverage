@@ -20,12 +20,24 @@ router.get('/',(req,res)=>{
 // @access public
 router.post('/',(req,res)=>{
     const newRequest = new Shift({
-        company:req.body.company,
-        storeNumber:req.body.storeNumber,
-        Shift:req.body.shift,
+        Company:req.body.company,
+        StoreNumber:req.body.storeNumber,
+        Description:req.body.Description,
+        ShiftStart:req.body.ShiftStart,
+        ShiftEnd:req.body.ShiftEnd,
         Poster:req.body.Poster
     });
     newRequest.save().then(shift=>res.json(shift));
 });
+
+//  @route DELETE api/shift_request
+//  @desc Delete a shift_request
+//  @access private
+router.delete('/:id',(req,res)=>{
+    Shift.findById(req.param.id)
+    .then(shift=>shift.remove().then(()=>res.json({sucess:true})))
+    .catch(err=>res.status(404).json({sucess:false,message:"shift doesn't exist",error:err}))
+    });
+
 
 module.exports=router;
