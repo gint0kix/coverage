@@ -39,5 +39,10 @@ router.delete('/:id',(req,res)=>{
     .catch(err=>res.status(404).json({sucess:false,message:"shift doesn't exist",error:err}))
     });
 
+// @route POST api/shift_request
+// @desc Updates a specific request as taken or not taken
+router.post('/:id',(req,res)=>{
+    Shift.findByIdAndUpdate(req.param.id,req.param.update);
+})
 
 module.exports=router;

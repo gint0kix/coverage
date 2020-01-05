@@ -4,7 +4,7 @@ const app=express();
 const config = require('config');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-//db Config
+//datebase Config
 const db = config.get('Backend.MONGOURI');
 //connect to Mongo
 
