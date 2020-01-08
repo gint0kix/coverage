@@ -25,11 +25,21 @@ class AppNavbar extends Component {
             <Navbar color="dark" dark expand="sm" className="mb-5">
                 <Container>
                     <NavbarBrand href="/">NavbarText</NavbarBrand>
-                    <NavbarToggler onCLick={this.toggle}/>
+                    <NavbarToggler onClick={this.toggle}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="https://google.com">Google</NavLink>
+                                <NavLink href="">Link2</NavLink>
+                            </NavItem>
+                        </Nav>
+                        <Nav className="ml-auto" navbar>
+                            <NavItem>
+                                <NavLink href="">Link2</NavLink>
+                            </NavItem>
+                        </Nav>
+                        <Nav className="ml-auto" navbar>
+                            <NavItem>
+                                <NavLink href="">Link3</NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>
