@@ -46,5 +46,4 @@ function register_validation (input){
         isValid=true;
     }
     return errors,result,isValid
-}   
-module.exports =register_validation;
+};   

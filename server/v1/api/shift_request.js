@@ -4,13 +4,13 @@ const bcrypt = require('bcryptjs');
 const validate = require('../validation/register_validation');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const Shift = require('../models/Shift_Request');
+const Shift_Req = require('../models/Shift_Request');
 
 // @route GET api/shift_request
 // @desc Get all shift_requests
 // @access Public
 router.get('/',(req,res)=>{
-    Shift.find()
+    Shift_Req.find()
         .sort({date:-1})
         .then(shifts=>res.json(shifts))
 });
@@ -19,7 +19,7 @@ router.get('/',(req,res)=>{
 // @desc Create a new shift_request
 // @access public
 router.post('/',(req,res)=>{
-    const newRequest = new Shift({
+    const newRequest = new Shift_Req({
         Company:req.body.company,
         StoreNumber:req.body.storeNumber,
         Description:req.body.Description,
@@ -34,7 +34,7 @@ router.post('/',(req,res)=>{
 //  @desc Delete a shift_request
 //  @access private
 router.delete('/:id',(req,res)=>{
-    Shift.findById(req.param.id)
+    Shift_Req.findById(req.param.id)
     .then(shift=>shift.remove().then(()=>res.json({sucess:true})))
     .catch(err=>res.status(404).json({sucess:false,message:"shift doesn't exist",error:err}))
     });
@@ -42,7 +42,7 @@ router.delete('/:id',(req,res)=>{
 // @route POST api/shift_request
 // @desc Updates a specific request as taken or not taken
 router.post('/:id',(req,res)=>{
-    Shift.findByIdAndUpdate(req.param.id,req.param.update);
+    Shift_Req.findByIdAndUpdate(req.param.id,{value});
 })
 
 module.exports=router;

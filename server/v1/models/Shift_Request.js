@@ -13,7 +13,7 @@ const ShiftRequestSchema = new Schema({
     },
     ShiftStart:{
         type: Date,
-        required: true   
+        required: true 
     },
     ShiftEnd:{
         type:Date,
